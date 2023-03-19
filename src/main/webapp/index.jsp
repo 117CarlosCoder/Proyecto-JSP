@@ -1,1 +1,1 @@
-<meta http-equiv="refresh" content="0;url=${pageContext.request.contextPath}/hello-servlet"/>
+<meta http-equiv="Refresh" content="0;url=${pageContext.request.contextPath}/hello-servlet"/>

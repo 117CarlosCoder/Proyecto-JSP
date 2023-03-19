@@ -6,7 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+
+
 <html>
 <head>
     <title>Login</title>
@@ -14,6 +16,9 @@
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
+
+<jsp:include page="WEB-INF/navBar.jsp"/>
+
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -43,7 +48,7 @@
                                 </div>
                             </c:if>
 
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit" >Login</button>
 
                         </form>
 

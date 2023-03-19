@@ -9,5 +9,5 @@ public class Producto {
     private  String nombre;
     private  int costo;
     private  int precio;
-    private  String existencia;
+    private  int existencia;
 }
