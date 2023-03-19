@@ -28,8 +28,8 @@
 
                         <form id="form-login" class="mb-md-5 mt-md-4 pb-5" action="${pageContext.request.contextPath}/login-servlet" method="POST">
 
-                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                            <h2 class="fw-bold mb-2 text-uppercase">Inicio de Sesión</h2>
+                            <p class="text-white-50 mb-5">Por favor ingresa tu usuario o correo y contraseña</p>
 
                             <div class="form-outline form-white mb-4">
                                 <input type="text" id="username" class="form-control form-control-lg" name="username"/>

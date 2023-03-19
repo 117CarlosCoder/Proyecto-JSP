@@ -15,7 +15,7 @@ public class UsuarioDB {
     }
 
     public void crear(Usuario user) {
-        String query = "INSERT INTO USUARIO (codigo,nombre,tienda, username, password,email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO USUARIOTIENDA_N (codigo,nombre,tienda, username, password,email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (var preparedStatement = conexion.prepareStatement(query)) {
             preparedStatement.setInt(1, user.getCodigo());
             preparedStatement.setString(2, user.getNombre());
@@ -31,7 +31,7 @@ public class UsuarioDB {
     }
 
         public void actualizar(Usuario user) {
-            String query = "UPDATE USUARIO SET nombre = ?, username = ?, password = ? WHERE codigo = ?";
+            String query = "UPDATE USUARIOTIENDA_N SET nombre = ?, username = ?, password = ? WHERE codigo = ?";
 
             try (var preparedStatement = conexion.prepareStatement(query)) {
                 preparedStatement.setString(1, user.getNombre());
@@ -46,7 +46,7 @@ public class UsuarioDB {
         }
 
         public void eliminar(int codigo) {
-            String query = "DELETE FROM USUARIO WHERE codigo = ?";
+            String query = "DELETE FROM USUARIOTIENDA_N WHERE codigo = ?";
 
             try (var preparedStatement = conexion.prepareStatement(query)) {
                 preparedStatement.setInt(1, codigo);

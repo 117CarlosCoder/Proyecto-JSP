@@ -4,8 +4,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<c:if test="${empty(tarea)}">
-  <code>${tarea}</code>
+<c:if test="${empty(producto)}">
   <c:choose>
     <c:when test="${!empty(productos)}">
       <table id="listTareas" class="table table-striped table-sm" cellspacing="0"

@@ -1,5 +1,6 @@
 package com.ipc2.demo.datos;
 
+import com.ipc2.demo.modelo.Compra;
 import com.ipc2.demo.modelo.Producto;
 
 import java.sql.Connection;
@@ -32,5 +33,24 @@ public class ProductosDB {
             System.out.println("Error al consultar: " + e);
         }
         return productos;
+    }
+
+    public  List<Compra> listarPoducto(int numero, int cantidad) {
+        var compras = new ArrayList<Compra>();
+        try (var stmt = conexion.createStatement();
+             var resultSet = stmt.executeQuery("SELECT * FROM PRODUCTO WHERE codigo = '" + numero +"'")) {
+            System.out.println(resultSet);
+            while (resultSet.next()) {
+
+                var nombre = resultSet.getString("nombre");
+                var precio  = resultSet.getInt("precio");
+
+                var compra = new Compra(numero,nombre,precio, cantidad);
+                compras.add(compra);
+            }
+        }catch (SQLException e) {
+            System.out.println("Error al consultar: " + e);
+        }
+        return compras;
     }
 }

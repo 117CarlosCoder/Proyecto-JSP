@@ -1,5 +1,6 @@
 package com.ipc2.demo.web.tareas;
 
+import com.ipc2.demo.datos.ProductosDB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

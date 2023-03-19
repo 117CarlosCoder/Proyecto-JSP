@@ -10,7 +10,7 @@
         <a class="nav-link active" href="${pageContext.request.contextPath}/listar-Productos">Crear Pedido</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="${pageContext.request.contextPath}/index.jsp">Envíos Pendientes</a>
+        <a class="nav-link active" href="${pageContext.request.contextPath}/listar-Pedidos">Envíos Pendientes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link active" href="${pageContext.request.contextPath}/index.jsp">nose</a>
