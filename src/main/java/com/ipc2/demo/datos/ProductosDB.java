@@ -35,22 +35,22 @@ public class ProductosDB {
         return productos;
     }
 
-    public  List<Compra> listarPoducto(int numero, int cantidad) {
-        var compras = new ArrayList<Compra>();
+    public  List<Compra> listarPoducto(int numero, int cantidad, ArrayList<Compra> compras) {
+
         try (var stmt = conexion.createStatement();
              var resultSet = stmt.executeQuery("SELECT * FROM PRODUCTO WHERE codigo = '" + numero +"'")) {
-            System.out.println(resultSet);
+            System.out.println("numero :" +numero);
             while (resultSet.next()) {
-
                 var nombre = resultSet.getString("nombre");
                 var precio  = resultSet.getInt("precio");
-
-                var compra = new Compra(numero,nombre,precio, cantidad);
+                var compra = new Compra(numero,nombre,precio,cantidad);
+                System.out.println(compra);
                 compras.add(compra);
             }
         }catch (SQLException e) {
             System.out.println("Error al consultar: " + e);
         }
+        System.out.println(compras);
         return compras;
     }
 }

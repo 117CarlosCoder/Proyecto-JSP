@@ -42,9 +42,8 @@
                     <tr>
                         <td>${compra.codigo}</td>
                         <td>${compra.nombre}</td>
-                        <td>${cmopra.precio}</td>
-                        <td>${cmopra.cantidad}</td>
-
+                        <td>${compra.precio}</td>
+                        <td>${compra.cantidad}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -56,6 +55,7 @@
     </c:choose>
 </c:if>
 
+    <form action="${pageContext.request.contextPath}/construir-Pedido" method="POST">
     <c:if test="${empty(producto)}">
         <c:choose>
             <c:when test="${!empty(productos)}">
@@ -74,24 +74,33 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="producto" items="${productos}" >
-                        <tr>
-                            <td>${producto.codigo}</td>
-                            <td>${producto.nombre}</td>
-                            <td>${producto.costo}</td>
-                            <td>${producto.precio}</td>
-                            <td>${producto.existencia}</td>
-                            <td><input  type="number" id="cantidad" name="cantidad" value="1"></td>
-                            <td><form action="${pageContext.request.contextPath}/construir-Pedido" method="POST"><button type="submit" >Agregar</button></form></td>
+                    <form action="/construir-Pedido" method="post">
+                        <c:forEach var="producto" items="${productos}" varStatus="status">
+                            <tr data-id="${status.index}">
+                                <td>${producto.codigo}</td>
+                                <td>${producto.nombre}</td>
+                                <td>${producto.costo}</td>
+                                <td>${producto.precio}</td>
+                                <td>${producto.existencia}</td>
+                                <td>${producto}</td>
+                                <td><input type="number" id="cantidad" value="1" name="cantidad_${status.index}" ></td>
+                                <td><button type="submit" class="agregar" name="id" value="${status.index}">Agregar</button></td>
+                            </tr>
+                        </c:forEach>
+                    </form>
 
-                        </tr>
-                    </c:forEach>
+
+
+
                     </tbody>
                 </table>
+
             </c:when>
             <c:otherwise>
                 <h4 class="pl-4">No hay productos</h4>
             </c:otherwise>
         </c:choose>
     </c:if>
+    </form>
+
 </div>
