@@ -1,0 +1,116 @@
+DROP DATABASE IF EXISTS tienda_database;
+
+CREATE DATABASE tienda_database;
+USE tienda_database;
+
+CREATE TABLE PRODUCTO(
+    codigo INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL,
+    costo VARCHAR(40) NOT NULL,
+    precio VARCHAR(40) NOT NULL,
+    existencias VARCHAR(40) NOT NULL,
+    PRIMARY KEY(codigo)
+);
+
+CREATE TABLE PRODUCTOPEDIDO(
+    codigo INT NOT NULL AUTO_INCREMENT,
+    costoU VARCHAR(40) NOT NULL,
+    cantidad VARCHAR(40) NOT NULL,
+    costoTotal VARCHAR(40) NOT NULL,
+    PRIMARY KEY(codigo)
+);
+
+CREATE TABLE TIENDA(
+    codigo INT NOT NULL AUTO_INCREMENT,
+    direccion VARCHAR(40) NOT NULL,
+    tipo VARCHAR(40) NOT NULL,
+    productos VARCHAR(1000) NOT NULL,
+    PRIMARY KEY(codigo)
+);
+
+CREATE TABLE ADMIN(
+    codigo INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL,
+    username VARCHAR(25) NOT NULL,
+    password VARCHAR(40) NOT NULL,
+    PRIMARY KEY(codigo)
+);
+
+CREATE TABLE USUARIOTIENDA_S(
+    codigo INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL,
+    username VARCHAR(25) NOT NULL,
+    password VARCHAR(40) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    PRIMARY KEY(codigo)
+);
+
+CREATE TABLE USUARIOTIENDA_B(
+    codigo INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL,
+    username VARCHAR(25) NOT NULL,
+    password VARCHAR(40) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    tiendas VARCHAR(1000) NOT NULL,
+    PRIMARY KEY(codigo)
+);
+
+CREATE TABLE USUARIOTIENDA_N(
+    codigo INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL,
+    tienda INT NOT NULL,
+    username VARCHAR(25) NOT NULL,
+    password VARCHAR(40) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    PRIMARY KEY(codigo),
+    CONSTRAINT FK_TIENDA FOREIGN KEY(tienda)
+    REFERENCES TIENDA(codigo)
+);
+
+CREATE TABLE PEDIDO(
+    id INT NOT NULL AUTO_INCREMENT,
+    tienda INT NOT NULL,
+    usuario VARCHAR(25) NOT NULL,
+    fecha VARCHAR(40) NOT NULL,
+    productos VARCHAR(40) NOT NULL,
+    total VARCHAR(40) NOT NULL,
+    estado VARCHAR(40) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE ENVIO(
+    id INT NOT NULL AUTO_INCREMENT,
+    tienda INT NOT NULL,
+    usuario VARCHAR(25) NOT NULL,
+    fechaSalida VARCHAR(40) NOT NULL,
+    fechaRecibido VARCHAR(40) NOT NULL,
+    productos VARCHAR(40) NOT NULL,
+    total VARCHAR(40) NOT NULL,
+    estado VARCHAR(40) NOT NULL,
+    PRIMARY KEY(id)
+    
+);
+
+CREATE TABLE INCIDENCIA(
+    id INT NOT NULL AUTO_INCREMENT,
+    tienda INT NOT NULL,
+    usuario VARCHAR(25) NOT NULL,
+    fecha VARCHAR(40) NOT NULL,
+    productos VARCHAR(40) NOT NULL,
+    solucion VARCHAR(40) NOT NULL,
+    estado VARCHAR(40) NOT NULL,
+    PRIMARY KEY(id)
+    
+);
+
+CREATE TABLE DEVOLUCION(
+    id INT NOT NULL AUTO_INCREMENT,
+    tienda INT NOT NULL,
+    usuario VARCHAR(25) NOT NULL,
+    fecha VARCHAR(40) NOT NULL,
+    productos VARCHAR(40) NOT NULL,
+    total VARCHAR(40) NOT NULL,
+    estado VARCHAR(40) NOT NULL,
+    PRIMARY KEY(id)
+    
+);
