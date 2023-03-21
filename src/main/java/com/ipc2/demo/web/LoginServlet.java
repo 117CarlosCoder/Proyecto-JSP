@@ -17,6 +17,8 @@ public class LoginServlet extends HttpServlet {
     private Usuario usuarioLogin;
     private UsuarioDB usuarioDB;
 
+    private String tipoUsuario;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -45,7 +47,9 @@ public class LoginServlet extends HttpServlet {
 
         if (validarUsuario(username, password, email)) {
             session.setAttribute("user", usuarioLogin);
-            response.sendRedirect("inicio.jsp");
+            //response.sendRedirect("inicio.jsp");
+            request.setAttribute("tipo",tipoUsuario);
+            request.getRequestDispatcher("inicio.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "Credenciales incorrectas");
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -54,8 +58,28 @@ public class LoginServlet extends HttpServlet {
 
     public boolean validarUsuario(String username, String password, String email) {
         var oUsuario = usuarioDB.obtenerUsuario(username, password, email);
-        if (oUsuario.isEmpty()) return false;
+        tipoUsuario = "tienda normal";
+        if (oUsuario.isEmpty()) {
+            oUsuario = usuarioDB.obtenerUsuarioTS(username, password, email);
+            tipoUsuario = "tienda supervisada";
+            if (oUsuario.isEmpty()){
+                oUsuario = usuarioDB.obtenerUsuarioTB(username,password,email);
+                tipoUsuario = "bodega";
+                System.out.println(oUsuario);
+                System.out.println(oUsuario.isEmpty());
+                if (oUsuario.isEmpty()){
+                    oUsuario = usuarioDB.obtenerAdmin(username,password);
+                    tipoUsuario = "admin";
 
+                }
+                else{
+                    return false;
+                }
+
+            }
+        }
+
+        System.out.println(tipoUsuario);
         usuarioLogin = oUsuario.get();
         return true;
     }

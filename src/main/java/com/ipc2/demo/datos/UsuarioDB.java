@@ -106,5 +106,85 @@ public class UsuarioDB {
 
             return Optional.ofNullable(usuario);
         }
+
+    public Optional<Usuario> obtenerUsuarioTS(String username, String password,String email) {
+        String query = "SELECT * FROM USUARIOTIENDA_S WHERE username = ? AND password = ? OR email = ? AND password = ? ";
+        Usuario usuario = null;
+
+        try (var preparedStatement = conexion.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(4, password);
+
+
+            try (var resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    var codigo = resultSet.getInt("codigo");
+                    var nombre = resultSet.getString("nombre");
+                    var tienda = 1;
+                    usuario = new Usuario(codigo, nombre, tienda, username, password,email);
+                }
+            }
+        }catch (SQLException e) {
+            System.out.println("Error al consultar: " + e);
+        }
+
+        return Optional.ofNullable(usuario);
+    }
+
+    public Optional<Usuario> obtenerUsuarioTB(String username, String password,String email) {
+        String query = "SELECT * FROM USUARIOTIENDA_B WHERE username = ? AND password = ? OR email = ? AND password = ? ";
+        Usuario usuario = null;
+
+        try (var preparedStatement = conexion.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(4, password);
+
+
+            try (var resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    var codigo = resultSet.getInt("codigo");
+                    var nombre = resultSet.getString("nombre");
+                    var tiendas = resultSet.getInt("tiendas");
+                    usuario = new Usuario(codigo, nombre, tiendas, username, password,email);
+                    System.out.println(usuario);
+                }
+            }
+        }catch (SQLException e) {
+            System.out.println("Error al consultar: " + e);
+        }
+            System.out.println(usuario);
+            return Optional.ofNullable(usuario);
+    }
+
+    public Optional<Usuario> obtenerAdmin(String username, String password) {
+        String query = "SELECT * FROM ADMIN WHERE username = ? AND password = ?  ";
+        Usuario usuario = null;
+
+        try (var preparedStatement = conexion.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+
+
+            try (var resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    var codigo = resultSet.getInt("codigo");
+                    var nombre = resultSet.getString("nombre");
+                    var tienda = 1;
+                    usuario = new Usuario(codigo, nombre, tienda, username, password,username);
+                }
+            }
+        }catch (SQLException e) {
+            System.out.println("Error al consultar: " + e);
+        }
+
+        return Optional.ofNullable(usuario);
+    }
     }
 

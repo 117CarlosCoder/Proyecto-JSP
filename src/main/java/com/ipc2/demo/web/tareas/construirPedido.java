@@ -18,7 +18,7 @@ public class construirPedido extends HttpServlet {
 
     private ProductosDB productosDB;
 
-    private ArrayList<Compra> compras = new ArrayList<>();
+    public ArrayList<Compra> compras = new ArrayList<>();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -57,7 +57,9 @@ public class construirPedido extends HttpServlet {
         String cod = request.getParameter("indice");
         System.out.println(cod);*/
 
-        request.setAttribute("compras", productosDB.listarPoducto(id+1,cantidad,compras));
+        session.setAttribute("compras", productosDB.listarPoducto(id+1,cantidad,compras));
+
+        System.out.println("pedidos ***" + session.getAttribute("productos"));
         request.getRequestDispatcher("/listar-Productos").forward(request, response);
     }
 

@@ -2,19 +2,43 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
-    <ul class="navbar-nav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="${pageContext.request.contextPath}/inicio.jsp">Tienda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="${pageContext.request.contextPath}/listar-Productos">Crear Pedido</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="${pageContext.request.contextPath}/listar-Pedidos">Envíos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Crear Incidencia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Crear Devolución</a>
+        </li>
+        <c:if test = "${tipo == 'tienda supervisada'}}">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Editar Pedido</a>
+          </li>
+        </c:if>
+
+      </ul>
+
+    <div class="justify-content-end">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="${pageContext.request.contextPath}/inicio.jsp">Tienda</a>
+        <a class="nav-link active" >${user.nombre}</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="${pageContext.request.contextPath}/listar-Productos">Crear Pedido</a>
+      <li>
+        <a class="nav-link active" href="${pageContext.request.contextPath}/logout">Cerrar sesión</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="${pageContext.request.contextPath}/listar-Pedidos">Envíos Pendientes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="${pageContext.request.contextPath}/index.jsp">nose</a>
-      </li>
-    </ul>
+          </ul>
+    </div>
+    </div>
+
+
   </div>
 </nav>

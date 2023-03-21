@@ -29,8 +29,8 @@ public class ListarProductos extends HttpServlet{
             Connection connection = (Connection) session.getAttribute("conexion");
             productosDB = new ProductosDB(connection);
 
-            request.setAttribute("productos", productosDB.listar());
-            request.getRequestDispatcher("inicio.jsp").forward(request, response);
+            session.setAttribute("productos", productosDB.listar());
+            request.getRequestDispatcher("/pedidos/crearPedido.jsp").forward(request, response);
 
         }
 }
