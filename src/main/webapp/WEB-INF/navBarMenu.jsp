@@ -23,7 +23,9 @@
             <a class="nav-link active" href="#">Editar Pedido</a>
           </li>
         </c:if>
-
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Reportes</a>
+        </li>
       </ul>
 
     <div class="justify-content-end">

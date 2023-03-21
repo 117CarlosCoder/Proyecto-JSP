@@ -19,34 +19,43 @@
     <jsp:include page="WEB-INF/navBarMenu.jsp"/>
     <div class="container shadow min-vh-100 py-4">
         <h1>Bienvenido a la Tienda Normal ${user.nombre}</h1>
+        <img src="/tienda.jpg" style="width: 500px">
+
     </div>
 </c:when>
 <c:when test="${tipo == 'tienda supervisada'}">
     <jsp:include page="WEB-INF/navBarMenu.jsp"/>
     <div class="container shadow min-vh-100 py-4">
         <h1>Bienvenido a la Tienda supervisada ${user.nombre}</h1>
+        <img src="/tienda.jpg" style="width: 500px">
+
     </div>
 </c:when>
 <c:when test="${tipo == 'bodega'}">
     <jsp:include page="WEB-INF/navBarMenuBodega.jsp"/>
     <div class="container shadow min-vh-100 py-4">
         <h1>Bienvenido a la Bodega ${user.nombre}</h1>
+        <img src="/tienda.jpg" style="width: 500px">
+
     </div>
 </c:when>
 <c:when test="${tipo == 'admin'}">
     <jsp:include page="WEB-INF/navBarMenuAdmin.jsp"/>
     <div class="container shadow min-vh-100 py-4">
         <h1>Bienvenido a la Tienda Administrador ${user.nombre}</h1>
+        <img src="/tienda.jpg" style="width: 500px">
+
     </div>
 </c:when>
     <c:otherwise>
         <jsp:include page="WEB-INF/navBarMenu.jsp"/>
         <div class="container shadow min-vh-100 py-4">
             <h1>Bienvenido a la Tienda ${user.nombre}</h1>
+            <img src="tienda.jpg" style="width: 500px">
+
         </div>
     </c:otherwise>
 </c:choose>
 
-<img src="/WEB-INF/tienda.jpg" >
 </body>
 </html>

@@ -41,9 +41,12 @@ public class LoginServlet extends HttpServlet {
 
         usuarioDB = new UsuarioDB(conexion);
 
+
+
         String username = request.getParameter("username");
         String email = request.getParameter("username");
         String password = request.getParameter("password");
+
 
         if (validarUsuario(username, password, email)) {
             session.setAttribute("user", usuarioLogin);

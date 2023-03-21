@@ -24,7 +24,7 @@ public class ProductosDB {
                 var nombre = resultSet.getString("nombre");
                 var costo  = resultSet.getInt("costo") ;
                 var precio  = resultSet.getInt("precio") ;
-                var exitencias = resultSet.getInt("exitencias");
+                var exitencias = resultSet.getInt("existencias");
 
                 var producto = new Producto(codigo,nombre,costo,precio, exitencias);
                 productos.add(producto);
